@@ -1,0 +1,150 @@
+{% extends 'index.html' %}
+	{% block title %}Подробная Информация{% endblock %}
+	{% block content %}
+<!-- onclick="Updating()"
+ -->
+	<div class="container ">
+  <!-- Trigger the modal with a button -->
+  <button id="edit" type="button" class="btn btn-info btn-lg detail" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span>  Редактировать</button> 
+  <button id="delete"  type="button" class="btn btn-danger btn-lg detail" onclick="Del()"><span class="glyphicon glyphicon-trash"></span> Удалить</button>
+
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+  
+ -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="form-control-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-control-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+			<h1>{{ spisok.doc_title }}</h1>
+			{% csrf_token %}
+						{{ spisok.doc_text }}		
+
+
+
+
+
+
+			<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+			
+			<!-- Modal content-->
+
+			<div class="modal-content" >
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<div id="content-main">
+						<form action="{% url 'polls:edit' spisok.id %}" method="POST" id="DataEdit"> {% csrf_token %}
+							<div>
+								<fieldset >
+									<div class="form-row field-doc_ready checkbox-inline">
+										<div class="checkbox-row">
+											{% if spisok.doc_ready == True %}
+												<input type="checkbox" name="doc_ready" id="id_doc_ready" checked/>
+												<label class="vCheckboxLabel" for="id_doc_ready">Doc ready</label>
+											{% else %}
+												<input type="checkbox" name="doc_ready" id="id_doc_ready" />
+												<label class="vCheckboxLabel" for="id_doc_ready"  >Doc ready</label>
+											{% endif %}
+										</div>
+									</div>
+									<div class="form-row field-doc_TXT checkbox-inline">
+										<div class="checkbox-row">
+											{% if spisok.doc_TXT == True %}
+												<input type="checkbox"  name="doc_TXT" id="id_doc_TXT" checked />
+												<label class="vCheckboxLabel" for="id_doc_TXT" >Doc TXT</label>
+											{% else %}
+												<input type="checkbox"  name="doc_TXT" id="id_doc_TXT" />
+												<label class="vCheckboxLabel" for="id_doc_TXT">Doc TXT</label>
+											{% endif %}
+										</div>
+									</div>
+									<div class="form-row field-doc_title">
+										<div>
+											<label for="id_doc_title">Doc title:</label>
+											<input type="text" name="doc_title" alt="Название" class="form-control enter" maxlength="200" value="{{ spisok.doc_title }}"  id="id_doc_title" />
+										</div>
+									</div>
+									<div >
+										<div>
+											<label for="id_doc_specification">Doc specification:</label>
+											<input type="text" class="form-control enter" name="doc_specification"  alt="Детали" value="{{ spisok.doc_specification }}" maxlength="500"  id="id_doc_specification" />
+										</div>
+									</div>
+									<div >
+										<div>
+											<label for="id_doc_note">Doc note:</label>
+											<input type="text" class="form-control enter" alt="Подсказка" name="doc_note"  maxlength="400" id="id_doc_note" value="{{ spisok.doc_note }}" />
+										</div>
+									</div>
+									<div >
+										<div>
+											<label class="required" for="id_doc_text">Doc text:</label>
+											<textarea type="text" name="doc_text" placeholder="Текст" class="form-control" id="id_doc_text"  maxlength="1500" value="{{ spisok.doc_text }}" required="" wrap="hard" > {{ spisok.doc_text }}</textarea>
+										</div>
+									</div>
+								</fieldset>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button  id="mail" type="submit" class="btn btn-default" data-dismiss="modal" onclick="myFunction()">Сохранить</button>
+					</div>
+					<script>
+						function myFunction() {
+						    document.getElementById("DataEdit").submit();
+						}
+						function Del() {
+							alert("I am an alert box!");
+							var isAdmin = confirm("Действительно удалить запись?");
+							alert(isAdmin);
+							if (isAdmin == true){
+								document.location.replace("{% url 'polls:delete' spisok.id  %}");
+							}				
+						}
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	{% endblock %}
