@@ -71,30 +71,35 @@ function sortTable(n) {
  } 
  };
 
-$(document).ready(function(){
-	    	alert(window.location.pathname);
-	    var adr = window.location.pathname;
-		var url = "/polls/";
-		if(adr != url){ alert('Разные');}
-		else{ alert('схожи');}
 
 
+function openTable(n){
+	switch (n) {
+		case 1:
+			location.href='/polls/DS/';
+			// location.href='/polls/test/';
+		break;
+		case 3:
+			location.href='/polls/TL/';
+			// location.href='/polls/test/';
+		break;
+		case 4:
+			location.href='/polls/LOT/';
+			// location.href='/polls/test/';
+		break;
+		case 5:
+			location.href='/polls/ET/';
+			// location.href='/polls/test/';
+		break;
+		case 6:
+			location.href='/polls/PC/';
+			// location.href='/polls/test/';
+		break;
+	default:
+		alert( 'Я таких значений не знаю' );
+	}
 
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 

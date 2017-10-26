@@ -1,0 +1,92 @@
+{% extends 'index.html' %}
+{% block title %}DocSources{% endblock %}
+
+{% block NavBar %}
+<li><a href="{% url 'polls:DSCreate' %}">Добавление</a></li>
+
+<li class="disabled"><a>DocSources</a></li>
+{% endblock %}
+class="btn" data-toggle="modal" data-target="#myModal" 
+
+{% block content %}
+
+
+		{% if context %}
+			
+
+
+<div class="form-inline">
+			<table id="myTable2" align="center" class="table ANC-hover table-bordered">
+				<thead>
+					<tr align="center nav nav-tabs">
+						<th onclick="sortTable(0)" class="col-md-1 tit">ID</a></th>
+						<th onclick="sortTable(1)" class="col-md-1 tit">Ready</th>
+						<th onclick="sortTable(2)" class="col-md-7 tit">Описание</th>
+						<th onclick="sortTable(3)" class="col-md-3 tit">Дата</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for DocSources in context %}
+
+					
+						<div class="row ">
+								<tr class="limit" align="center" title="{{DocSources.doc_note }}" onclick="location.href='/polls/DS/{{ DocSources.id }}'">
+									<td class="col-md-1 tit ">{{ DocSources.id }}</td>
+									<td class="col-md-1 tit">{% if DocSources.ready == True %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
+									<td class="col-md-7 " >{{ DocSources.title }}</td>
+									<td class="col-md-3 " >{{ DocSources.date|date }}</td>
+
+								</tr>
+						</div>	
+
+							{% endfor %}
+				</tbody>
+			</table>
+			
+</div>
+
+
+
+		{% else %}
+			<p style="margin-top: 400px; font-size: 50px; text-align: center; color:yellow;">
+				Данных по таблице нет!
+				<br>
+				Вы будете перенаправлены на добавление новой записи через 5 секунд!
+			</p>
+			<script type="text/javascript">
+				window.onload=setTimeout(function func(){ location.href='/polls/DS/Create'; }, 5000)
+
+			</script>
+		{% endif %}	
+	
+
+{% endblock %}
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="exampleModalLabel">New message</h4>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="recipient-name" class="form-control-label">Recipient:</label>
+							<input type="text" class="form-control" id="recipient-name">
+						</div>
+						<div class="form-group">
+							<label for="message-text" class="form-control-label">Message:</label>
+							<textarea class="form-control" id="message-text"></textarea>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button>
+				</div>
+			</div>
+		</div>
+	</div>

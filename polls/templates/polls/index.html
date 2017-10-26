@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" background-color="black">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{{ section.title }}{% endblock %}</title>
 {% load static %}
+
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css' %}" />
 <!-- Optional theme -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap-theme.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-    </ul>
-  </div>
+  	<div class="container-fluid">
+	    <div class="navbar-header brand">
+	      	<a class="navbar-ANC yellow" onclick="location.href='/polls/';">Астрономический Научный Центр</a>
+	    </div>
+	    <ul class="nav navbar-nav" id="foo" >
+	  		{% block NavBar %}
+
+
+	  		{% endblock %}
+	    </ul>
+	    <!-- <ul class="nav navbar-nav navbar-right" style="margin-right: 30px;" >
+	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    </ul> -->
+  	</div>
 </nav>
-<body data-target=".navbar-example">
-<div id="content" >
+
+
+
+</head>
+<body>
+	<div id="content" class="Back fon otstup">
         {% block content %}
 			...	
         {% endblock %}
-
+	</div>
 
         {% block testing %}
 			
@@ -60,42 +61,40 @@
 
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="exampleModalLabel">New message</h4>
-			</div>
-			<div class="modal-body">
-				<form>
-				<div class="form-group">
-				<label for="recipient-name" class="form-control-label">Recipient:</label>
-				<input type="text" class="form-control" id="recipient-name">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="exampleModalLabel">New Data</h4>
 				</div>
-				<div class="form-group">
-				<label for="message-text" class="form-control-label">Message:</label>
-				<textarea class="form-control" id="message-text"></textarea>
+				<div class="modal-body">
+
+
+					<form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+				{% csrf_token %}
+				{% include 'add.html'%}
+						<div class="form-group">
+							<div class="col-sm-offset-8 col-sm-10">
+								<button type="submit" class="btn btn-success"  >Submit</button>
+							</div>
+						</div>
+					</form>
+
+
 				</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Send message</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Send message</button>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 
 
-
-
-
-    </div>
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" /></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -107,4 +106,28 @@
 </body>
 </html>
 
+
+
+
+
+
+
+<!-- 
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#home" data-toggle="tab">Главная</a></li>
+  <li><a href="#profile" data-toggle="tab">Профиль</a></li>
+  <li><a href="#messages" data-toggle="tab">Сообщения</a></li>
+  <li><a href="#settings" data-toggle="tab">Настройки</a></li>
+</ul>
+
+
+
+<div class="tab-content">
+  <div class="tab-pane active" id="home">...</div>
+  <div class="tab-pane" id="profile">...</div>
+  <div class="tab-pane" id="messages">...</div>
+  <div class="tab-pane" id="settings">...</div>
+</div>
+
+ -->
 

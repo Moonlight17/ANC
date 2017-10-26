@@ -1,50 +1,172 @@
-.test{
-   margin: 0 auto;
-width: 900px;
+html {
+	height: 100%;
 }
+
+body {
+	background: linear-gradient(rgb(40, 40, 40), rgba(91, 2, 8, 0.93));
+}
+
 .green{
 	color:green;
 }
+
 .red{
 	color:red;
 }
-td {
-  vertical-align: center;
-  text-align: center;
-}
 
-.tit{
+
+td, th {
+	vertical-align: center;
 	text-align: center;
 }
+
+
 .shir{
 	width: 50px;
 }
-table{
-	margin-top: 100px;
-	table-layout: fixed;
+.Detail{
+	margin-bottom: 20px;
+	max-width: 75%;
+	padding: 10px;
+    margin-top: 190px;
+	border-radius: 12px;
+	color: yellow;
+	font-size: 25px;
+	text-align: left;
 }
+#myTable2{ 
+
+	margin-bottom: 20px;
+	max-width: 65%;
+	background-color: rgb(246, 246, 246);
+	padding: 10px;
+    margin-top: 190px;
+	border-radius: 12px;
+	border: 2px solid gold;
+	box-shadow: 0 0 0 14px gold;
+	cursor: pointer;
+}
+
 #myProgress {
-    width: 100%;
-    background-color: grey;
+	width: 100%;
+	background-color: grey;
 }
-#myBar {
-    width: 0%;
-    height: 30px;
-    background-color: green;
+
+
+
+.yellow{
+	color:yellow;
 }
-.detail{
-	margin-top: 20px;
+.yellow:hover{
+	color:red;
+}
+
+@.two {
+	background: #E4E5D2;
+	padding: 50px 20px;
+	text-align: center;
+} 
+.two h1 {
+	font-family: 'Open Sans', sans-serif;
+	position: relative;
+	color: #5C2610;
+	font-size: 3em;
+	font-weight: normal;
+	line-height: 1;
+	padding: 10px 0;
+	margin: 0;
+	display: inline-block;
+}
+.two h1:before {
+	content: ""; 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 80%;
+	height: 200%;
+	border-radius: 50%/30%;
+	border: 6px solid #5C2610;
+	border-left-color: transparent;
+	border-right-color: transparent;
+}
+@media (max-width: 420px) {
+	.two h1 {font-size: 2em;}
 }
 .enter{
 	width: 60%;
 }
+
 textarea{
-	min-height: 150px;
+	width: 	300px;
+	height: 100px;
 }
+
 .limit{
 	white-space: nowrap;
 	overflow: hidden; /* Обрезаем все, что не помещается в область */
-    padding: 5px; /* Поля вокруг текста */
-    text-overflow: ellipsis; /* Добавляем многоточие */
+	padding: 5px; /* Поля вокруг текста */
+	text-overflow: ellipsis; /* Добавляем многоточие */
 }
-.selected{ background: silver;}
+
+.selected {
+	background: #0f0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+												/*Заимствовано из Bootstrap*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+										
+.ANC-hover > tbody > tr:hover > td, 
+
+.ANC-hover > tbody > tr:hover > th {
+	background-color: rgba(161, 235, 255, 0.44)
+}
+.navbar-default .navbar-ANC {
+	color: #777
+}
+
+.navbar-ANC {
+	float: left;
+	padding: 15px 15px;
+	font-size: 18px;
+	line-height: 20px
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: yellow
+}
+
+.navbar-inverse  .navbar-nav > li > a:hover {
+    color: 	#ee9600;
+    background-color: rgba(204, 238, 255, 0.07);
+}
+	

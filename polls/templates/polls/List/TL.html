@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+{% block title %}Title List{% endblock %}
+
+{% block NavBar %}
+<li><a href="{% url 'polls:TLCreate' %}">Добавление</a></li>
+<li><button type="button" href="{% url 'polls:TLCreate' %}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button></li>
+{% endblock %}
+
+{% block content %}
+
+
+		{% if context %}
+			
+
+
+
+
+			<table id="myTable2" align="center" class="table table ANC-hover table-bordered">
+				<thead>
+					<tr align="center nav nav-tabs">
+						<th onclick="sortTable(0)" class="col-md-1 tit">ID</a></th>
+						<th onclick="sortTable(2)" class="col-md-1 tit">Файл</th>
+						<th onclick="sortTable(3)" class="col-md-7 tit">Название</th>
+						<th onclick="sortTable(4)" class="col-md-3 tit">Дата</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for TitleList in context %}
+						<div class="row ">
+								<tr class="limit" align="center" title="{{TitleList.doc_note }}" onclick="location.href='/polls/TL/{{ TitleList.id }}'">
+									<td class="col-md-1 tit ">{{ TitleList.id }}</td>
+<!-- 									<td class="col-md-3 " >{{ TitleList.title }}</td> -->
+									<td class="col-md-1 " >{% if TitleList.upload.url != None %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
+									<td class="col-md-7 " >{{ TitleList.title }}</td>
+									<td class="col-md-3 " >{{ TitleList.date }}</td>
+
+
+								</tr>{{ titlelist.upload.url }}
+						</div>	
+
+					{% endfor %}
+				</tbody>
+			</table>
+
+		{% else %}
+			<p style="margin-top: 400px; font-size: 50px; text-align: center; color:yellow;">
+				Данных по таблице нет!
+				<br>
+				Вы будете перенаправлены на добавление новой записи через 5 секунд!
+			</p>
+			<script type="text/javascript">
+				window.onload=setTimeout(function func(){ location.href='/polls/TL/Create'; }, 5000)
+
+			</script>
+		{% endif %}	
+	
+
+
+{% endblock %}
+
+
+{% block add %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

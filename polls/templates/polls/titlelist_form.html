@@ -1,0 +1,17 @@
+{% block title %}Добавление{% endblock %}
+
+{% block testing %}
+	<div style="margin-top: 100px;">
+		<div class="add">
+			<form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+				{% csrf_token %}
+				{% include 'add.html'%}
+					<div class="form-group">
+						<div class="col-sm-offset-8 col-sm-10">
+							<button type="submit" class="btn btn-success"  >Submit</button>
+						</div>
+					</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

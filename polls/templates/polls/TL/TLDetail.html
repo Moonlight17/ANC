@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	{% block title %}Подробная Информация{% endblock %}
+	{% block NavBar %}
+
+<button class="btn btn-info btn-lg detail" onclick="location.href='/polls/TL/{{ titlelist.id }}/Update'">
+	<span class="glyphicon glyphicon-pencil"></span>  
+	Редактировать
+</button> 
+<form action="{% url 'polls:TLDelete' titlelist.id %}" method="post" class="inline">
+	{% csrf_token %}
+	<input type="hidden" name="id" value="{{ TitleList.id }}" />
+	<button type="submit" class="btn btn-danger btn-sm">
+		<span class="glyphicon glyphicon-trash"></span>
+	</button>
+</form>
+{% endblock %}
+
+	{% block content %}
+
+
+	<div id="TLDetail" class="row Detail">
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-1">
+					ID: 
+				</div>
+				<div class="col-md-8 col-md-offset-3">
+					{{ titlelist.id }}
+				</div><br>
+				<div class="col-md-1">	
+					Название: 
+				</div>
+				<div class="col-md-8 col-md-offset-3">
+					{{ titlelist.title }}
+				</div><br>
+				<div class="col-md-1">
+					Готовность: 
+				</div>
+				<div class="col-md-8 col-md-offset-3">
+					{{ titlelist.ready }}
+				</div><br>
+				<div class="col-md-1">
+					Заметка: 
+				</div>
+				<div class="col-md-8 col-md-offset-3">
+					{{ titlelist.doc_note }}
+				</div><br>
+				<div class="col-md-1">
+					Текст:        
+				</div>
+				<div class="col-md-8 col-md-offset-3">
+					{{ titlelist.doc_text }}
+				</div><br>
+				<div class="col-md-1">
+					Дата: 
+				</div>
+				<div class="col-md-8 col-md-offset-3">
+					{{ titlelist.date }}
+				</div><br>
+			</div>
+		</div>
+		<div class="col-md-4">
+			{% if TitleList.upload.url != None %}
+				<img alt="{{ titlelist.doc_note }}" src="{{ titlelist.upload.url }}">
+			{% else %}
+				<img alt="" src="">
+			{% endif %}
+		</div>
+	</div>
+
+
+
+
+
+
+
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+  
+ -->
+
+
+
+	{% endblock %}

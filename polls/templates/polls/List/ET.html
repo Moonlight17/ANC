@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% block title %}Title List{% endblock %}
+
+{% block NavBar %}
+<li><a href="{% url 'polls:DSCreate' %}">Добавление</a></li>
+{% endblock %}
+class="btn" data-toggle="modal" data-target="#myModal" 
+
+{% block content %}
+
+
+		{% if context %}
+			
+
+
+
+
+			<table id="myTable2" align="center" class="table table ANC-hover table-bordered">
+				<thead>
+					<tr align="center nav nav-tabs">
+						<th onclick="sortTable(0)" class="col-md-1 tit">ID</a></th>
+						<th onclick="sortTable(1)" class="col-md-1 tit">TXT</th>
+						<th onclick="sortTable(2)" class="col-md-10 tit">Описание</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for TitleList in context %}
+						<div class="row ">
+								<tr class="limit" align="center" title="{{TitleList.doc_note }}">
+									<td class="col-md-1 tit ">{{ TitleList.id }}</td>
+									<td class="col-md-1 tit">{% if TitleList.ready == True %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
+<!-- 									<td class="col-md-3 " >{{ TitleList.title }}</td> -->
+									<td class="col-md-10 " >{{ TitleList.doc_specification }}</td>
+								</tr>
+						</div>	
+
+					{% endfor %}
+				</tbody>
+			</table>
+		
+		{% else %}
+			<p style="margin-top: 400px; font-size: 50px; text-align: center; color:yellow;">
+				Данных по таблице нет!
+				<br>
+				Вы будете перенаправлены на добавление новой записи через 5 секунд!
+			</p>
+			<script type="text/javascript">
+				window.onload=setTimeout(function func(){ location.href='/polls/ET/Create'; }, 5000)
+
+			</script>
+		{% endif %}	
+	
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

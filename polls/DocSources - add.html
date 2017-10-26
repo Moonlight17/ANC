@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% block title %}ТЕСТИРУЕМ!!!{% endblock %}
+
+{% block content %}
+<li><a class="btn" data-toggle="modal" data-target="#myModal" href="#">Добавление</a></li>
+
+
+
+
+
+
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+
+			<div class="modal-content" >
+				<div class="modal-header">
+
+
+
+
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+
+
+
+
+				</div>
+				<div class="modal-body">
+					<div id="content-main">
+						<form class="form-horizontal" action="" method="post" enctype="multipart/form-data" >
+							{% csrf_token %}
+							{% include 'add.html'%}
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10 col- ">
+									<button type="submit" class="btn btn-danger">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+
+
+
+
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}
