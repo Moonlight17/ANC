@@ -6,17 +6,21 @@
 	{% block title %}Подробная Информация{% endblock %}
 	{% block NavBar %}
 
-<button class="btn btn-info btn-lg detail" onclick="location.href='/polls/TL/{{ titlelist.id }}/Update'">
-	<span class="glyphicon glyphicon-pencil"></span>  
-	Редактировать
-</button> 
-<form action="{% url 'polls:TLDelete' titlelist.id %}" method="post" class="inline">
-	{% csrf_token %}
-	<input type="hidden" name="id" value="{{ TitleList.id }}" />
-	<button type="submit" class="btn btn-danger btn-sm">
-		<span class="glyphicon glyphicon-trash"></span>
+<li style="margin-top: 1px;">
+	<button class="btn btn-info btn-lg detail" alt="Редактировать" onclick="location.href='/polls/TL/{{ titlelist.id }}/Update'">
+		<span class="glyphicon glyphicon-pencil"></span>  
+		
 	</button>
-</form>
+</li>
+<li style="margin-top: 1px;">
+	<form action="{% url 'polls:TLDelete' titlelist.id %}" method="post" class="inline">
+	{% csrf_token %}
+		<input type="hidden" name="id" value="{{ titlelist.id }}" />
+		<button type="submit" class="btn btn-danger btn-lg">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
+	</form>
+</li>
 {% endblock %}
 
 	{% block content %}
@@ -64,10 +68,10 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			{% if TitleList.upload.url != None %}
+			{% if titlelist.upload.url != None %}
 				<img alt="{{ titlelist.doc_note }}" src="{{ titlelist.upload.url }}">
 			{% else %}
-				<img alt="" src="">
+				<P></P>
 			{% endif %}
 		</div>
 	</div>

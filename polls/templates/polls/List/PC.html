@@ -2,7 +2,7 @@
 {% block title %}Title List{% endblock %}
 
 {% block NavBar %}
-<li><a href="{% url 'polls:DSCreate' %}">Добавление</a></li>
+<li><a href="{% url 'polls:PCCreate' %}">Добавление</a></li>
 {% endblock %}
 class="btn" data-toggle="modal" data-target="#myModal" 
 
@@ -24,13 +24,13 @@ class="btn" data-toggle="modal" data-target="#myModal"
 					</tr>
 				</thead>
 				<tbody>
-					{% for TitleList in context %}
+					{% for PayloadClasses in context %}
 						<div class="row ">
-								<tr class="limit" align="center" title="{{TitleList.doc_note }}">
-									<td class="col-md-1 tit ">{{ TitleList.id }}</td>
-									<td class="col-md-1 tit">{% if TitleList.ready == True %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
-<!-- 									<td class="col-md-3 " >{{ TitleList.title }}</td> -->
-									<td class="col-md-10 " >{{ TitleList.doc_specification }}</td>
+								<tr class="limit" align="center" title="{{PayloadClasses.doc_note }}" onclick="location.href='/polls/PC/{{ PayloadClasses.id }}'">
+									<td class="col-md-1 tit ">{{ PayloadClasses.id }}</td>
+									<td class="col-md-1 tit">{% if PayloadClasses.ready == True %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
+<!-- 									<td class="col-md-3 " >{{ PayloadClasses.title }}</td> -->
+									<td class="col-md-10 " >{{ PayloadClasses.title }}</td>
 								</tr>
 						</div>	
 
@@ -45,7 +45,7 @@ class="btn" data-toggle="modal" data-target="#myModal"
 				Вы будете перенаправлены на добавление новой записи через 5 секунд!
 			</p>
 			<script type="text/javascript">
-				window.onload=setTimeout(function func(){ location.href='/polls/DS/Create'; }, 5000)
+				window.onload=setTimeout(function func(){ location.href='/polls/PC/Create'; }, 5000)
 
 			</script>
 		{% endif %}	

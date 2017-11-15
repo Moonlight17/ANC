@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+	{% block title %}Подробная Информация{% endblock %}
+	{% block NavBar %}
+
+
+<li style="margin-top: 1px; margin-left: 100px;">
+	<button class="btn btn-info btn-lg detail" alt="Редактировать" onclick="location.href='/polls/LOT/{{ launchoperationtypes.id }}/Update'">
+		<span class="glyphicon glyphicon-pencil"></span>  
+		
+	</button>
+</li>
+<li style="margin-top: 1px; margin-left: 10px;">
+	<form action="{% url 'polls:LOTDelete' launchoperationtypes.id %}" method="post" class="inline">
+	{% csrf_token %}
+		<input type="hidden" name="id" value="{{ launchoperationtypes.id }}" />
+		<button type="submit" class="btn btn-danger btn-lg">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
+	</form>
+</li>
+{% endblock %}
+
+	{% block content %}
+
+
+	<div id="Detail" class="row Detail">  
+		<div class="col-md-1">
+			ID: 
+		</div>
+		<div class="col-md-10 col-md-offset-3">
+			{{ launchoperationtypes.id }}
+		</div><br>
+		<div class="col-md-1">	
+			Название: 
+		</div>
+		<div class="col-md-10 col-md-offset-3">
+			{{ launchoperationtypes.title }}
+		</div><br>
+		<div class="col-md-1">
+			Готовность: 
+		</div>
+		<div class="col-md-10 col-md-offset-3">
+			{{ launchoperationtypes.ready }}
+		</div><br>
+		<div class="col-md-1">
+			Заметка: 
+		</div>
+		<div class="col-md-10 col-md-offset-3">
+			{{ launchoperationtypes.doc_note }}
+		</div><br>
+		<div class="col-md-1">
+			Текст:        
+		</div>
+		<div class="col-md-10 col-md-offset-3">
+			{{ launchoperationtypes.doc_text }}
+		</div><br>
+		<div class="col-md-1">
+			Дата: 
+		</div>
+		<div class="col-md-10 col-md-offset-3">
+			{{ launchoperationtypes.date }}
+		</div><br>
+	</div>
+
+
+	{% endblock %}

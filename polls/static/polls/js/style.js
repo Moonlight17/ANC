@@ -106,8 +106,4 @@ function openTable(n){
 
 
 
-
-
-
-
  

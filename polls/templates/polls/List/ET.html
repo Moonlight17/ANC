@@ -2,9 +2,8 @@
 {% block title %}Title List{% endblock %}
 
 {% block NavBar %}
-<li><a href="{% url 'polls:DSCreate' %}">Добавление</a></li>
+<li><a href="{% url 'polls:ETCreate' %}">Добавление</a></li>
 {% endblock %}
-class="btn" data-toggle="modal" data-target="#myModal" 
 
 {% block content %}
 
@@ -24,13 +23,13 @@ class="btn" data-toggle="modal" data-target="#myModal"
 					</tr>
 				</thead>
 				<tbody>
-					{% for TitleList in context %}
+					{% for EventTypes in context %}
 						<div class="row ">
-								<tr class="limit" align="center" title="{{TitleList.doc_note }}">
-									<td class="col-md-1 tit ">{{ TitleList.id }}</td>
-									<td class="col-md-1 tit">{% if TitleList.ready == True %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
-<!-- 									<td class="col-md-3 " >{{ TitleList.title }}</td> -->
-									<td class="col-md-10 " >{{ TitleList.doc_specification }}</td>
+								<tr class="limit" align="center" title="{{EventTypes.doc_note }}" onclick="location.href='/polls/ET/{{ EventTypes.id }}'">
+									<td class="col-md-1 tit ">{{ EventTypes.id }}</td>
+									<td class="col-md-1 tit">{% if EventTypes.ready == True %} <span class="glyphicon glyphicon-ok green"></span> {% else %} <span class="glyphicon glyphicon-remove red "></span> {% endif %}</td>
+<!-- 									<td class="col-md-3 " >{{ EventTypes.title }}</td> -->
+									<td class="col-md-10 " >{{ EventTypes.doc_text }}</td>
 								</tr>
 						</div>	
 

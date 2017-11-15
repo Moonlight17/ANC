@@ -3,7 +3,7 @@ html {
 }
 
 body {
-	background: linear-gradient(rgb(40, 40, 40), rgba(91, 2, 8, 0.93));
+	background: linear-gradient(rgb(40, 40, 40), rgba(2, 14, 91, 0.93));
 }
 
 .green{
@@ -13,7 +13,17 @@ body {
 .red{
 	color:red;
 }
-
+.add{
+	font-size: 20px;
+	width: 34%;
+	color:yellow;
+	margin-bottom: 20px;
+    margin-top: 10%;
+    margin-left: 33%;
+	border-radius: 12px;
+	align-self: center;
+	box-shadow: 0 0 0 6px gold;
+}
 
 td, th {
 	vertical-align: center;
@@ -33,6 +43,10 @@ td, th {
 	color: yellow;
 	font-size: 25px;
 	text-align: left;
+}
+img{
+	width: 800px;
+	height: 600px;
 }
 #myTable2{ 
 
